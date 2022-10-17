@@ -11,13 +11,11 @@ module.exports = {
 
         const queue = client.player.getQueue(interaction.guildId);
 
-        if (!queue)
-        {
+        if (!queue) {
             await interaction.reply("FFS there is no queue. Are you stupid?");
         }
 
         const playerInfo = queue.current.title;
-
         const songInfo = playerInfo.split(" - ");
 
         const options = {
@@ -25,21 +23,20 @@ module.exports = {
             title: songInfo[1].split("(")[0],
             artist: songInfo[0],
             optimizeQuery: true,
-        };
+        }
 
-        const lyric = await getLyrics(options);
+        const lyrics = await getLyrics(options);
         const song = await getSong(options);
 
         const embed = {
-            author: { name: "Lyrics" },
+            author: {name: "Lyrics"},
             title: song.title,
-            description: lyric + `\n*** [link](${song.url}) ***`,
-            thumbnail: { url: song.albumArt },
+            description: lyrics + `\n*** [link](${song.url}) ***`,
+            thumbnail: {url: song.albumArt},
         };
 
         await interaction.reply({
             embeds: [embed]
-        })
+        }).catch(() => {})
     }
-
 }
