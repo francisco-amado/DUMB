@@ -16,9 +16,9 @@ module.exports = {
 
         if (!queue.connection) await queue.connect(interaction.member.voice.channel);
 
-        let embed = new EmbedBuilder();
+        const embed = new EmbedBuilder();
 
-        let songList = [
+        const songList = [
             "sweet memories treewax",
             "sunny days treewax bleak fall",
             "tired treewax bleak fall",
