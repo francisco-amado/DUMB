@@ -1,2 +1,2 @@
 # DUMB
-discord.js 14 music bot
+discord.js 14 bot
